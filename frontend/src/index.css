@@ -1,3 +1,405 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* ================================
+   POS SYSTEM - GLOBAL CSS POLISH
+   Keeps existing Tailwind layout and functionality.
+================================ */
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #172033;
+  background: #f5f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease,
+    border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+button:hover {
+  filter: brightness(0.97);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.28);
+  outline-offset: 2px;
+}
+
+input,
+select,
+textarea {
+  min-height: 40px;
+  border: 1px solid #d7deea;
+  border-radius: 8px;
+  background: #fff;
+  color: #172033;
+  padding: 9px 12px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #98a2b3;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #5685e8;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Main application background */
+.min-h-screen.bg-gray-100 {
+  background: #f5f7fb;
+}
+
+/* Sidebar - same layout, cleaner finish */
+.w-64.bg-slate-900 {
+  background: linear-gradient(180deg, #17243b 0%, #101a2d 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 5px 0 22px rgba(15, 23, 42, 0.06);
+}
+
+.w-64.bg-slate-900 h1 {
+  letter-spacing: -0.04em;
+}
+
+.w-64.bg-slate-900 a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #d5deec;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease,
+    padding-left 160ms ease;
+}
+
+.w-64.bg-slate-900 a:hover {
+  color: #fff;
+  background: rgba(96, 165, 250, 0.14);
+  padding-left: 16px;
+}
+
+.w-64.bg-slate-900 button {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Top welcome bar */
+.flex-1 > div > .bg-white {
+  border-bottom: 1px solid #e8edf5;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.035);
+}
+
+/* Page headings */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  color: #172033;
+}
+
+/* Cards and bordered content panels */
+div.border.p-4.rounded,
+div.border.p-5.rounded,
+div.border.p-3.rounded {
+  border-color: #e3e9f2;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+}
+
+div.border.p-4.rounded:hover,
+div.border.p-5.rounded:hover,
+div.border.p-3.rounded:hover {
+  border-color: #d5deeb;
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.055);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #e3e9f2;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+}
+
+thead tr,
+tr.bg-gray-100 {
+  background: #f1f5f9;
+}
+
+th {
+  padding: 12px 14px;
+  color: #475467;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px 14px;
+  color: #344054;
+  border-top: 1px solid #edf0f5;
+  vertical-align: middle;
+}
+
+tbody tr {
+  transition: background-color 140ms ease;
+}
+
+tbody tr:hover {
+  background: #f8faff;
+}
+
+/* Buttons retain their existing Tailwind colors */
+button.rounded,
+button[class*="rounded"] {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+button.bg-black {
+  background: #24344f;
+}
+
+button.bg-black:hover {
+  background: #17243b;
+}
+
+button.bg-blue-500,
+button.bg-blue-600 {
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.14);
+}
+
+button.bg-green-500,
+button.bg-green-600 {
+  box-shadow: 0 2px 5px rgba(22, 163, 74, 0.12);
+}
+
+button.bg-red-500,
+button.bg-red-600 {
+  box-shadow: 0 2px 5px rgba(220, 38, 38, 0.12);
+}
+
+/* Login form - no JSX changes required */
+body #root > div.h-screen {
+  min-height: 100vh;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(96, 165, 250, 0.13), transparent 32%),
+    radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.10), transparent 30%),
+    #f5f7fb;
+}
+
+body #root > div.h-screen > form {
+  width: min(100%, 400px);
+  padding: 32px;
+  border: 1px solid #e4eaf3;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.09);
+}
+
+body #root > div.h-screen > form h2 {
+  margin-bottom: 24px;
+  color: #17243b;
+  letter-spacing: -0.04em;
+}
+
+body #root > div.h-screen > form input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 14px;
+}
+
+body #root > div.h-screen > form button {
+  min-height: 44px;
+  margin-top: 4px;
+  border-radius: 8px;
+  background: #243b63;
+  font-weight: 700;
+}
+
+body #root > div.h-screen > form button:hover {
+  background: #172b4d;
+}
+
+/* Modals and dialogs */
+.fixed.inset-0 {
+  backdrop-filter: blur(3px);
+}
+
+[role="dialog"],
+.fixed.inset-0 > div {
+  border-radius: 12px;
+}
+
+/* Dark mode - follows the existing sidebar toggle */
+.dark body {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+.dark .min-h-screen.bg-gray-100 {
+  background: #111827;
+}
+
+.dark .flex-1 > div > .bg-white {
+  border-color: #273449;
+}
+
+.dark h1 {
+  color: #f3f4f6;
+}
+
+.dark div.border.p-4.rounded,
+.dark div.border.p-5.rounded,
+.dark div.border.p-3.rounded {
+  border-color: #344155;
+  background: #1f2937;
+  box-shadow: none;
+}
+
+.dark table {
+  border-color: #344155;
+  background: #1f2937;
+}
+
+.dark thead tr,
+.dark tr.bg-gray-100 {
+  background: #273449;
+}
+
+.dark th {
+  color: #cbd5e1;
+}
+
+.dark td {
+  color: #e5e7eb;
+  border-color: #344155;
+}
+
+.dark tbody tr:hover {
+  background: #273449;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  border-color: #475569;
+  background: #1f2937;
+  color: #f3f4f6;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Smaller screens */
+@media (max-width: 768px) {
+  .w-64.bg-slate-900 {
+    width: 190px;
+    min-width: 190px;
+    padding: 14px;
+  }
+
+  .flex-1 > div > .p-6 {
+    padding: 16px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .w-64.bg-slate-900 {
+    width: 150px;
+    min-width: 150px;
+    padding: 10px;
+  }
+
+  .w-64.bg-slate-900 h1 {
+    font-size: 18px;
+  }
+
+  .w-64.bg-slate-900 a {
+    padding: 8px 7px;
+    font-size: 13px;
+  }
+
+  body #root > div.h-screen > form {
+    padding: 24px;
+  }
+}
