@@ -403,3 +403,64 @@ body #root > div.h-screen > form button:hover {
     padding: 24px;
   }
 }
+
+/* ==========================================
+   GLOBAL MOBILE RESPONSIVENESS — ALL PAGES
+   Additive overrides; no JSX changes required.
+   ========================================== */
+#root, #root > div { max-width: 100%; }
+#root > .flex.min-h-screen > .flex-1 {
+  min-width: 0;
+  max-width: 100%;
+}
+#root > .flex.min-h-screen > .flex-1 > .p-6 {
+  min-width: 0;
+}
+/* Keep wide data tables readable and swipeable on every page. */
+#root > .flex.min-h-screen table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#root > .flex.min-h-screen th,
+#root > .flex.min-h-screen td {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  html, body, #root { width: 100%; min-width: 0; }
+  #root > .flex.min-h-screen { width: 100%; max-width: 100%; }
+  #root > .flex.min-h-screen > .flex-1 { width: 100%; min-width: 0; }
+  #root > .flex.min-h-screen > .flex-1 > .p-6 { padding: 14px; }
+  #root > .flex.min-h-screen > .flex-1 > .bg-white { gap: 10px; padding: 12px 14px; }
+  #root > .flex.min-h-screen > .flex-1 > .p-6 > .flex {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  #root > .flex.min-h-screen > .flex-1 > .p-6 h1 { font-size: 1.5rem; line-height: 1.3; }
+  #root > .flex.min-h-screen table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  #root > .flex.min-h-screen table thead,
+  #root > .flex.min-h-screen table tbody { white-space: nowrap; }
+  #root > .flex.min-h-screen table th,
+  #root > .flex.min-h-screen table td { padding: 10px 12px; font-size: 13px; }
+  #root > .flex.min-h-screen table button { min-height: 34px; white-space: nowrap; }
+  #root > .flex.min-h-screen input,
+  #root > .flex.min-h-screen select,
+  #root > .flex.min-h-screen textarea { max-width: 100%; }
+  #root > .flex.min-h-screen .grid { min-width: 0; }
+  #root > .flex.min-h-screen .overflow-x-auto { max-width: 100%; -webkit-overflow-scrolling: touch; }
+  #root > .flex.min-h-screen .fixed.inset-0 > div { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow-y: auto; }
+}
+@media (max-width: 520px) {
+  #root > .flex.min-h-screen > .flex-1 > .p-6 { padding: 12px; }
+  #root > .flex.min-h-screen > .flex-1 > .p-6 > .flex > input { flex: 1 1 180px; min-width: 0; }
+  #root > .flex.min-h-screen > .flex-1 > .p-6 > .flex > button { flex-shrink: 0; }
+  #root > .flex.min-h-screen table th,
+  #root > .flex.min-h-screen table td { font-size: 12px; }
+}
