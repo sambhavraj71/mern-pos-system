@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://mern-pos-system-jcpf.onrender.com",
+  baseURL: "https://mern-pos-system-jcpf.onrender.com/api",
 });
 
 API.interceptors.request.use((req) => {
